@@ -1,0 +1,7 @@
+1) When container started, Everyone wanted to move to container, but initially it was primarily for stateless application, and slowly it started working towards statefull application.
+
+2) When we want to move statefull application to kubernetes we need to write our own mathod to manage storage system.
+
+2) When People want move their stateful application into kubernetes, and vender needs to write custome plugin to manage storage for each provider, and even they need to update code in kubernetes, and they need to wait for release.
+
+to shortout this Gap Docker, Google and Meeshosphere come togather, and decided model for storage driver and their extention.
