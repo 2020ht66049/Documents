@@ -1,0 +1,61 @@
+1) What is Devops
+2) What is Design Thinking
+3) lab setup
+
+
+
+1) Technologies are growing day by Day
+1.1) Bank[Manual] > [ATM] > [Digital wallet]
+1.2) Comunication[]
+1.3) Travel Industry[]
+1.4) 2G, 3G, 5G and 7G
+
+
+The main goal is- 1) Cost optimization, 2) Better user experiance, 3) Agility[doing work fast]
+
+What is Devops?
+Devops is all about improvement
+
+
+Design thinking
+================
+Design thinking is the pillar of Devops
+
+What is Design thinking?
+Think before you do
+
+GIT, Jennkins, tf, packer, maven, ansible, docker, kubernetes and monitoring
+
+SDLC: Software Develpment life cycle
+Plan code build test > Development Phase > Experimental phase
+relase deploy operate monitor > Operation phase > Procedure side
+
+*
+* *
+* * *
+* * * *
+* * * * *
+
+# Adding 2 numbers in C prgramming
+void main()
+{
+int[long] a,b,c;
+c=a+b;
+}
+
+Integer range: 0 - 65535
+35000+35000=70000[Expercted Output] 4465[output]
+
+
+Thought of family member
+
+Homework
+=======
+Father of Devops> Patrick Debois > https://www.youtube.com/watch?v=5VqXqtL0xQI&t=427s
+Design thinking> https://www.youtube.com/watch?v=_r0VX-aU_T8
+https://killercoda.com/login
+
+
+
+
+
