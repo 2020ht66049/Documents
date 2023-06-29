@@ -1,0 +1,71 @@
+Application development flow and application development team[Developer mindset], Agile and CMMI level 5
+=========================================================================================================
+
+Requirement: I need to create e-learning portal
+
+1) Client has requirement[Give tender], and they will open bidding system.
+
+2) System Analyst will do anaysis and financial part
+
+3) Hiring suitable people.
+
+4) Deciding language and building a team[Java, Python, C++, PHP, GO, PLSQL....] >> Architect
+
+5) Hiring for Project Engineer[Person who support/develop project]
+
+6) Design thinking analysis requirement for codding part
+
+7) WOW[Way of working] Developer > Architect > Analyst > Client
+
+8) Earlier it not recomended that Developer and Analyst talk to client because may be their communication skills is not good.
+
+9) Their are ppl leaving the organization, so we should have clear documentation.
+
+10) There were lots of cultural problem their in developers team, to sortout them Agile principles invented
+
+Agile WOW: set of 12 principles that says how environment should be
+=========
+
+Link: https://www.agilealliance.org/agile101/12-principles-behind-the-agile-manifesto/
+
+
+10% Done or 90% remaining
+
+
+Facebook(10000 users)
+
+I may 1000000 user or may be 1000 user > Sustanable deployment
+
+let say, we have 3 ppl
+1) Developer[Develop the code]
+2) Deployment Engineer[maintain the environment]
+3) Tester[test the code]
+
+Problem with traditional develpment is-
+1) Resource utilization is less > Resource utilization is 100%
+2) cost is high
+
+Calculator[Addition, substration, multiplication and division]
+
+CMMI level5- your code would be tested in multiple system before it get delivered to production.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
