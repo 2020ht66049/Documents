@@ -1,0 +1,172 @@
+Today's Agenda: 1) Operational mindset. 2) CMMI level 5 3) Testing
+==============
+
+
+Demo project: https://github.com/spring-projects/spring-petclinic
+
+[command to install java]
+apt-get update
+apt install openjdk-17-jre-headless
+
+ubuntu $ java --version
+openjdk 17.0.7 2023-04-18
+OpenJDK Runtime Environment (build 17.0.7+7-Ubuntu-0ubuntu120.04)
+OpenJDK 64-Bit Server VM (build 17.0.7+7-Ubuntu-0ubuntu120.04, mixed mode, sharing)
+
+git clone https://github.com/spring-projects/spring-petclinic.git
+cd spring-petclinic
+./mvnw package
+java -jar target/*.jar
+
+ERROR] Tests run: 47, Failures: 0, Errors: 2, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  08:46 min
+[INFO] Finished at: 2023-06-30T01:17:49Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-surefire-plugin:3.0.0:test (default-test) on project spring-petclinic: 
+[ERROR] 
+[ERROR] Please refer to /root/spring-petclinic/target/surefire-reports for the individual test results.
+[ERROR] Please refer to dump files (if any exist) [date].dump, [date]-jvmRun[N].dump and [date].dumpstream.
+[ERROR] -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoFailureException
+
+Operation people will go and raise ticket with development team.
+
+
+CMMI level5
+============
+
+1) Capability Maturity Model Integration.
+
+2) To achieve CMMI level 5, we need to perform multi level testing of application before we deploy to production.
+
+Development> Here Developer work and they do unit testing.
+
+Test> Here tester would be owner, and he performs functional and non-functional[look and feel] testing.
+
+UAT> User acceptance testing. Requirement vs Actual.
+
+Production environment: My code is running for end user.
+Production deployment checklist:
+1) Developer, tester and user approval for production deployment.
+2) Backup plan incase main plan is not working.
+3) Steps to make sure verdict of change window.	
+
+DR[Disastter recovery]: This is stand by system for production.
+
+Operational mindset is to get all the task performed by following process and get them documented.
+
+
+Devloper vs Operational fight
+==============================
+1) Developer wants to do things in fly whereas Operation needs to follow CMMI level5, and achive the result.
+void main(){
+int a.b,c;
+c= a+b;
+}
+
+35000+35000=70000[expected], 4636[Actual]
+
+As a fix, I need to change int to long. but it will take appoximately 15 days to deliver into procution.
+
+1) Developer and Operational people are not respecting each other. they think they are acting oversmart.
+
+
+Actual Devops Definations
+========================
+[SRE] > Site reliability Engineer 
+
+Devops is set of 5 practice:
+
+1. Treat Ops as first-class citizens from the point of view of requirements.
+Adding requirements to a system from Ops may require some architectural
+modification. In particular, the Ops requirements are likely to be in the
+area of logging, monitoring, and information to support incident handling.
+These requirements will be like other requirements for modifications to a
+system: possibly requiring some minor modifications to the architecture
+but, typically, not drastic modifications.
+
+2. Make Dev more responsible for relevant incident handling. By itself, this
+change is just a process change and should require no architectural
+modifications. However, just as with the previous category, once Dev
+becomes aware of the requirements for incident handling, some
+architectural modifications may result.
+
+3. Enforce deployment process used by all, including Dev and Ops
+personnel. In general, when a process becomes enforced, some individuals
+may be required to change their normal operating procedures and,
+possibly, the structure of the systems on which they work. One point where
+a deployment process could be enforced is in the initiation phase of each
+system. Each system, when it is initialized, verifies its pedigree. That is, it
+arrived at execution through a series of steps, each of which can be
+checked to have occurred. Furthermore, the systems on which it depends
+(e.g., operating systems or middleware) also have verifiable pedigrees.
+
+4. Use automation[CICD] to deliver changes to customer[faster way]
+
+5. Use IAC[infrastucture as code]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
