@@ -1,0 +1,94 @@
+Cloud computing
+================
+
+https://devops2020ht66049.s3.us-west-2.amazonaws.com/JanBask+Cloud+Essentials.zip
+
+Requirement:
+    Terraform code that does the following:
+    Build a new nginx:latest image with a custom nginx.conf via Dockerfile
+    Create a new namespace
+    2 Replicaset
+    0.5vcpu & 512Mi Limit
+    ClusterIP + Port 8080
+    1 Persistent Volume
+        2Gi capacity
+        local file path (e.g., ${PWD}/pvc)
+    Set nginx logs to write to the above PVC
+
+Before applying main.tf:
+
+controlplane $ vi dockerfile
+controlplane $ vi main.tf
+controlplane $ docker image ls
+REPOSITORY   TAG       IMAGE ID   CREATED   SIZE
+controlplane $ kubectl get ns
+NAME                 STATUS   AGE
+default              Active   41d
+kube-node-lease      Active   41d
+kube-public          Active   41d
+kube-system          Active   41d
+local-path-storage   Active   41d
+>> terraform-hca-dev-namespace   Active   90s
+controlplane $ kubectl get pv
+No resources found
+controlplane $ kubectl get pods
+No resources found in default namespace.
+
+After applying main.tf
+
+*** With the help terraform command we can create/destroy infrasture within 20 second
+
+
+CMMI level5: We need to test our application multiple times before delivering customer.
+
+1 week= 168 hrs Our environment would be running, but my developer are working only for 40 hrs, so why I am running my system 128hrs addtionally a week.
+
+120/hr every week environment waste
+
+Every organisation is having team like Unix[atleast 5 members], Storage[atleast 5 members], backup[atleast 5 members], and they run the show 24*7.
+
+* The project is wasting huge amout of money, and we can save all the money by cloud computing.
+
+*** Cloud computing say what you need tell me, I will provide that in few minutes, and I would be charging per minute basis.
+
+Linux instance with 1000 GB HDD, 5 CPU and 64 GB RAM,
+
+
+30 CPU and 60 GB RAM > 2 CPU and 6 GB RAM
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
