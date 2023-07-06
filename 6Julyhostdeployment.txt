@@ -1,0 +1,114 @@
+Host deployment and golden image
+================================
+Petclinic is a Spring Boot application built using Maven or Gradle. You can build a jar file and run it from the command line (it should work just as well with Java 17 or newer):
+
+Lab link: https://killercoda.com/playgrounds/scenario/ubuntu
+
+host deployment
+================
+git clone https://github.com/spring-projects/spring-petclinic.git
+cd spring-petclinic
+./mvnw clean package -DskipTests
+java -jar target/*.jar
+
+1) Above are the deployment step's those are shared by Developer.
+
+2) In this application operator need to do capacity planing and operation of application.
+   1 server suporting 100 uses. and I have 50000000 user, we need to run multiple instance of server 500000
+
+3) As this application required java then I need to install java 500000 times.[1 minute for each java installtion] 500000 minutes
+
+Time in aws deployment
+======================
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:09 min
+[INFO] Finished at: 2023-07-06T01:16:03Z
+
+time in killer koda
+====================
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  07:19 min
+
+4) System is behaving unprictably.
+
+5) I just created server1[linux terminal] and nothing[java, terraform and packer] is installed
+root@ip-172-31-7-165:~# java --version
+Command 'java' not found, but can be installed with:
+apt install openjdk-11-jre-headless  # version 11.0.18+10-0ubuntu1~22.04, or
+apt install default-jre              # version 2:1.11-72build2
+apt install openjdk-17-jre-headless  # version 17.0.6+10-0ubuntu1~22.04
+apt install openjdk-18-jre-headless  # version 18.0.2+9-2~22.04
+apt install openjdk-19-jre-headless  # version 19.0.2+7-0ubuntu3~22.04
+apt install openjdk-8-jre-headless   # version 8u362-ga-0ubuntu1~22.04
+root@ip-172-31-7-165:~# terraform --version
+Command 'terraform' not found, but can be installed with:
+snap install terraform
+root@ip-172-31-7-165:~# packer --version
+Command 'packer' not found, but can be installed with:
+snap install packer  # version 1.0.0-2, or
+apt  install packer  # version 1.6.6+ds1-4ubuntu0.22.04.2
+See 'snap info packer' for additional versions.
+
+We have now installed java, terraform and packer
+[installing java]
+apt install openjdk-17-jre-headless
+
+[installing terraform]
+wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install terraform
+
+[installing packer]
+wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install packer
+
+
+
+root@ip-172-31-7-165:~# java --version
+openjdk 17.0.7 2023-04-18
+OpenJDK Runtime Environment (build 17.0.7+7-Ubuntu-0ubuntu122.04.2)
+OpenJDK 64-Bit Server VM (build 17.0.7+7-Ubuntu-0ubuntu122.04.2, mixed mode, sharing)
+root@ip-172-31-7-165:~# terraform --version
+Terraform v1.5.2
+on linux_amd64
+root@ip-172-31-7-165:~# packer --version
+1.9.1
+
+Currently creating AMI ami-07a9a7f83aa9a2647 from instance i-0593275c61fb3bcaf. Check that the AMI status is 'Available' before deleting the instance or carrying out other actions related to this AMI.
+
+AMI> Amazon machine image
+root@ip-172-31-14-202:~# java --version
+openjdk 17.0.7 2023-04-18
+OpenJDK Runtime Environment (build 17.0.7+7-Ubuntu-0ubuntu122.04.2)
+OpenJDK 64-Bit Server VM (build 17.0.7+7-Ubuntu-0ubuntu122.04.2, mixed mode, sharing)
+root@ip-172-31-14-202:~# terraform --version
+Terraform v1.5.2
+on linux_amd64
+root@ip-172-31-14-202:~# packer --version
+1.9.1
+
+Golden image
+=============
+1) When we are creating any instance we need to select base OS[ubuntu] and do provisioning.
+
+2) Golden image provide a way to take copy of your provisioned server, and you can create image out of it. So by default you will have those software installed.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
