@@ -1,0 +1,73 @@
+Note: With the help of devops practice we can save 1-2% money but with cloud we can save appoximately 50% money.
+
+
+Casestudy:
+
+1) Let say we have 5 environment[Dev, test, stage, prod and DR]
+
+2) As a part CMMI level-5 I am testing my application multiple times before delivering to production. and all the environment are running 24*7.
+
+3) Lets assume every environment has 3 services[Frontend, middleware and backend, and each are running in a separat box]
+
+4) Lets assume 1 service is taking 24$/day, so everyday we are spending 120$.
+
+5) So every year we are spending {24[Pricing per service]*3[number of service]*365[number of day]*5[number of Environment]}= 131400$
+
+6) Traditional way of calculating charge > Laptop[Windows-Antivirus, 07-July-2023- 5-yr licence], so keep your system off but still licence is running
+                                           number of hours in 5 yr> 43800[total] > 15000[utilized] > wasting[28800]
+
+7) cloud way of calculating charges> Pay when you are using.
+
+8) Saving money in cloud vs traditional> in above example in tradional way we can only save electicity bill.
+
+9) Cloud is a way to save money, and it concidered as a subsystem of DevOps.
+
+10) Running docker in linux environment with autoscalling.
+    traditinal> Linux + docker + 10-server
+    cloud> install cluster cloud provider will take care of everything.
+    Link> https://youtu.be/FnFvpIsBrog 
+    
+11) *** Cloud is providing a very good way to save money, so most[all] of the organization moving towards it, but Devops provide stable framework. so orgamization are practicing devops in cloud.
+
+12) *** Cloud is providing same interface as traditonal.
+
+terraform and packer
+====================
+Terraform and packer are infracture management software.
+
+Intalltion of terraform and packer
+=================================
+URL to install software: https://developer.hashicorp.com/terraform/downloads
+
+wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install terraform
+
+wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install packer
+
+root@ip-172-31-28-184:~# packer --version
+1.9.1
+root@ip-172-31-28-184:~# terraform --version
+Terraform v1.5.2
+on linux_amd64
+
+Homework: Please watch below 8 videos
+========
+https://developer.hashicorp.com/terraform/tutorials/aws-get-started
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
