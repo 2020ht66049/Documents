@@ -1,0 +1,93 @@
+Terraform installation steps:
+============================
+
+wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install terraform
+
+
+Access key and secrate key are like username andd password. these are used for billing purpse.
+
+terraform init: it is the basically initilization command.
+
+terraform apply: I can create resource which is defined in main.tf
+
+terraform destroy: I can delete resource which is defined in main.tf
+
+1) We are creating infrastucture in cloud, and we are going to pay money as per usage. from terraform end he needs to find a person for which he can raised the bill.
+
+2) terraform has 3000+ providers[AWS is one of them]
+
+3) In traditional system, if we need to change RAM from 2GB to 8GB what is the process?
+
+4) Cloud is working pay per minute
+terraform init/apply
+git clone https://github.com/spring-projects/spring-petclinic.git
+cd spring-petclinic
+./mvnw package
+java -jar target/*.jar
+./mvnw test
+terraform destroy
+
+
+GIT repository
+==============
+Initially, we have written main.tf file for terraform configuration, and we used t2.medium, but later we change it to t2.small. How I can track these changes?
+
+t2.medium[1 GB RAM, 1 CPU] > t2.small[1 GB RAM, 0.5 CPU] > t2.large[8GB RAM, 2 CPU]
+
+t2.micro> 0.0116$/hr
+t2.small>0.023$/hr
+t2.large> 0.15$/hr
+
+requirement
+==========
+I want to have record of change that is done? how I can do this?
+Awser is: GIT
+
+Link to explore:
+================
+Packer video > 4 vides > 
+https://devops2020ht66049.s3.us-west-2.amazonaws.com/Packer.zip
+Note: Please start seeing video after 1 hr 25 minute
+
+https://docs.github.com/en/get-started/quickstart/create-a-repo
+
+https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
+
+terraform pending topics:
+==========================
+1) how to write terraform configuration
+2) what all terminolgy we have in terraform
+3) how cost optimization can be achived by terraform
+4) packer AMI creation
+5) packer and terraform comparision
+
+
+Tuesday
+=======
+GIT and jenkins[installation and basics]
+
+Wednesday
+=========
+docker
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
