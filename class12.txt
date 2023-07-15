@@ -1,0 +1,146 @@
+Advantage of GIT:
+1) Saving space[saving cost], 12GB file we can save in 456 MB. in GIT staging area, it uses SHA1 Algorithm for hashing and compression.
+
+2) Jenkins: The leading open source automation server, Jenkins provides hundreds of plugins to support building, deploying and automating any project. 
+
+Link to download Jenkins: https://www.jenkins.io/download/
+                          https://www.jenkins.io/doc/book/installing/linux/
+
+http://ec2-52-32-185-164.us-west-2.compute.amazonaws.com:8080/
+Patrick
+Patrick@321
+
+2) In Jenkins we need to write the job.
+You need to take back-up of your system. genreally they will do some linux command.
+
+3) Jenkins is working in colour codding
+   Green: Job is successful
+   Red: Job is failed
+
+4) Console output is a linux log for that job.
+
+5) creating error
+root@ip-172-31-21-145:~# echoo "Welcome to Jenkins"
+Command 'echoo' not found, did you mean:
+  command 'echo' from deb coreutils (8.32-4.1ubuntu1)
+Try: apt install <deb name>
+
+6) Cron Job in Linux
+
+
+
+
+
+
+
+
+2) GIT Branching[Rebase, branch and merge]
+==========================================
+Branching is parallel line of development
+
+1) To check how many branches are we are having > GIT branch
+
+2) How to create the branch > git branch branch-name
+
+3) * means branch where you are now
+ubuntu $ git branch
+  dev
+* main
+  pre-prod
+  prod
+  stage
+  test
+
+4) To change working branch git checkout <branch-name>
+ubuntu $ git checkout dev
+Switched to branch 'dev'
+ubuntu $ git branch
+* dev
+  main
+  pre-prod
+  prod
+  stage
+  test
+
+remote repository: It's repository which present in GIT HUB
+
+echo "# Docker" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/2020ht66049/Docker.git
+git push -u origin main
+
+
+echo "# Docker" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M Dev
+git remote add origin https://github.com/2020ht66049/Docker.git
+git push -u origin Dev
+
+
+Merge:
+=====
+Dev > Test > pred prod > prod
+
+git checkout Test# Now you are in test branch
+git merge Dev
+
+
+** First read current branch commit then child branch commit then final commit to maintain linear history known as rebase
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
