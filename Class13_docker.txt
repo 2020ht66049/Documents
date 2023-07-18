@@ -1,0 +1,74 @@
+Docker
+======
+1) Host Deployment
+When Developer is giving step to deploy a application into host[single server] is known as host deployment
+git clone https://github.com/spring-projects/spring-petclinic.git
+cd spring-petclinic
+./mvnw package
+java -jar target/*.jar
+
+ubuntu $ ./mvnw package
+Error: JAVA_HOME is not defined correctly.
+  We cannot execute 
+
+1) Godlen image: with the help of golden image we can install dependent software, but this is not a good approache because we are doing binding.
+
+# To install spring pet clinic application, we have dependany on java 17
+
+2) Dependancies management
+==========================
+Before, you deploy anything, you should installed depending software first.
+
+
+3) Docker Introduction
+======================
+Docker is a devops Software.
+
+Docker says package application with dependanices
+
+# Choosing operating system
+from ubuntu
+
+# Dependancy-1
+apt-get update
+apt install openjdk-17-jre-headless -y 
+
+# Dependancy-2
+RUN apt-get update
+RUN apt install git -y
+
+# Application deployment steps
+git clone https://github.com/spring-projects/spring-petclinic.git
+cd spring-petclinic
+./mvnw package
+java -jar target/*.jar
+
+Creating package of application along with depenancy is called docker image.
+
+
+4) Docker installation
+======================
+root@ip-172-31-29-210:~# docker --version
+Command 'docker' not found, but can be installed with:
+snap install docker         # version 20.10.24, or
+apt  install docker.io      # version 20.10.21-0ubuntu1~22.04.3
+apt  install podman-docker  # version 3.4.4+ds1-1ubuntu1
+See 'snap info docker' for additional versions.
+
+root@ip-172-31-29-210:~# curl -fsSL https://get.docker.com -o install-docker.sh
+
+sh install-docker.sh
+
+root@ip-172-31-29-210:~# docker --version
+Docker version 24.0.4, build 3713ee1
+
+5) Docker playground
+====================
+# Suppose, I installed spring pet clinic in killerkoda, so application would be running in port 8080
+
+git clone https://github.com/spring-projects/spring-petclinic.git
+cd spring-petclinic
+./mvnw package
+java -jar target/*.jar
+
+You can then access petclinic at http://localhost:8080/. but in killaerkoda we are not able to open the port so, so we are going to do https://labs.play-with-docker.com
