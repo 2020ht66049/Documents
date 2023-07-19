@@ -1,0 +1,199 @@
+Docker images
+=============
+
+Rules to write docker images:
+
+1) To write docker image we need to write dockerfile, and command to create docker image is
+       docker build -t <image-name> <path-of-file>
+
+2) The first statement of dockerfile is start with from statement
+       from <os-name>
+
+3) To execute any linux command we need to use CMD statement
+       CMD linux-statement
+
+Practice: 
+1) Create docker image for ubuntu OS for printing hello world
+      from ubuntu
+      CMD echo "hello-world"
+2) Create docker image for centos OS for printing hello world
+      from centos
+      CMD echo "hello-world"
+3) Create docker image for alpine OS for printing hello world
+      from alpine
+      CMD echo "hello-world"
+
+4) To list docker images
+         docker image ls
+
+5) To run docker image
+         docker run image-name
+
+6) We need to docker image size optimization. One of it's way to to choose best os-image
+$ docker image ls
+REPOSITORY   TAG       IMAGE ID       CREATED         SIZE
+image1       latest    02cc47c1d52b   2 weeks ago     77.8MB
+image3       latest    d3ec20fa9dc1   4 weeks ago     7.33MB
+image2       latest    01036606dcf5   22 months ago   231MB
+[node1] (local) root@192.168.0.13 ~
+$ docker run image1
+hello-world
+[node1] (local) root@192.168.0.13 ~
+$ docker run image2
+hello-world
+[node1] (local) root@192.168.0.13 ~
+$ docker run image3
+hello-world
+[node1] (local) root@192.168.0.13 ~
+
+7) If we have multiple CMD then last CMD would be executed, and remaining would be ignored
+        from ubuntu
+        CMD echo "Hello"
+        CMD echo "Hi"
+        CMD echo "bye"
+
+8) We can override CMD by buid argument
+         $ docker run image4 echo "who are you"
+           who are you
+
+
+9) I don't want my argument to be override > Then we need to use ENTRYPOINT instead of CMD
+
+10) What if we have multiple ENTRYPOINT
+     from ubuntu
+     ENTRYPOINT echo "Hi"
+     ENTRYPOINT echo "Hello"
+     ENTRYPOINT echo "bye"
+     output: bye
+
+11) Suppose, we want to configure the environment. My requirement is I want to create ubuntu image with java 17 and maven installed.
+    To do configuration we need to use RUN statement
+     from ubuntu
+     RUN apt-get update
+     RUN apt install openjdk-17-jre-headless -y
+     RUN apt-get update
+     RUN apt install maven -y
+    
+12)  To create docker container from image, we need to run the command docker run <image-name>. The default behavior is container would be terminated after doing his work.
+    from ubuntu
+    cmd echo "Hi"
+    >>> Container will print hi, and terminate itself.
+$ docker ps -a
+CONTAINER ID   IMAGE     COMMAND                   CREATED          STATUS                      PORTS     NAMES
+fa40458377a2   image8    "/bin/sh -c 'echo \"H…"   6 seconds ago    Exited (0) 5 seconds ago              heuristic_antonelli
+
+13) I want container to not get terminated
+     
+14) Command to get create and get inside container
+    >>>docker run -it image8 /bin/bash
+
+15) I want to give name to container
+$ docker run --name Umesh image8
+Hello
+[node1] (local) root@192.168.0.13 ~
+$ docker ps -a
+CONTAINER ID   IMAGE     COMMAND                   CREATED          STATUS                      PORTS     NAMES
+1e9db7f849a1   image8    "/bin/sh -c 'echo \"H…"   14 seconds ago   Exited (0) 13 seconds ago             Umesh
+
+16) I want to open a port
+    EXPOSE <port-number> // This port is known as container port
+
+17) I want containt to be printed in background[-d stand for detached mode]
+       >>> I want to ping google.com
+           from ubuntu
+           RUN sudo apt update
+           RUN sudo apt install iputils-ping
+           Error>  > [2/3] RUN sudo apt update:
+                     #0 0.290 /bin/sh: 1: sudo: not found
+
+           from ubuntu
+           RUN apt update
+           RUN apt install iputils-ping -y
+           CMD ping google.com
+
+#0 2.031 Do you want to continue? [Y/n] Abort.
+------
+dockerfile:3
+--------------------
+   1 |                from ubuntu
+   2 |                RUN apt update
+   3 | >>>            RUN apt install iputils-ping
+   4 |     
+--------------------
+ERROR: failed to solve: process "/bin/sh -c apt install iputils-ping" did not complete successfully: exit code: 1
+           
+
+18) Port forwarding > -p hostport:container port
+
+19) Whenever you are writing instruction to cdockerfile, docker will convert them into low level linux command
+    I executed > RUN apt install iputils-ping
+    but container converted it to > /bin/sh -c apt install iputils-ping
+
+20) Docker commands are by default running by root user, so if you specify the sudo it will not work
+           Error>  > [2/3] RUN sudo apt update:
+           #0 0.290 /bin/sh: 1: sudo: not found
+
+    ubuntu $ sudo whoami
+    root
+    ubuntu $ whoami
+    root
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Question for Homework:
+======================
+Difference between CMD and entrypoint
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
