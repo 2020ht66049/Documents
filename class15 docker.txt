@@ -1,0 +1,112 @@
+COPY, ADD, WORKDIR, USER 2) Dockerizing spring pet clinic 3) Multi stage docker build 4) Docker architecture 
+===============================================================================================================
+1) Docker image type
+====================
+   Official image
+   User image> I created and putting it here
+
+
+2) Docker flow diagram
+      Docker alway perfer local communication
+      
+$ docker run alpine # This command run alpine container
+Unable to find image 'alpine:latest' locally
+latest: Pulling from library/alpine
+31e352740f53: Pull complete 
+Digest: sha256:82d1e9d7ed48a7523bdebc18cf6290bdb97b82302a8a9c27d4fe885949ea94d1
+Status: Downloaded newer image for alpine:latest
+
+
+3) COPY > Copy file from host to container[COPY SOURCE Destination] # local to container
+   ADD >  Add file from host to container [ADD URL_from_where_to_copy Destination] # remote to container
+   USER > By defauly docker in running with root, so if we want to change user then we can write like below
+   
+   from ubuntu
+   COPY Document . # It will copy my document folder, but for that I need to dowload that locally
+   ADD https://github.com/2020ht66049/Documents.git . # It will directly copy from URL
+   USER docker
+   WORKDIR > RUN cd 
+
+
+4) Task, Dockerize spring petclinic application for ubuntu
+from ubuntu as AS
+
+
+5) Multi stage docker build
+
+FROM maven:3-jdk-8 as mvn
+RUN git clone https://github.com/spring-projects/spring-petclinic.git
+RUN cd spring-petclinic && mvn package
+
+FROM openjdk:8-alpine
+LABEL AUTHOR="khaja"
+COPY --from=mvn /spring-petclinic/target/spring-petclinic*.jar /spring-petclinic.jar
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar"]
+CMD ["/spring-petclinic.jar"]
+
+
+# Creating jar file
+git clone https://github.com/spring-projects/spring-petclinic.git
+cd spring-petclinic
+./mvnw package
+
+# Run the jar file
+java -jar target/*.jar [10 MB]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+         
+
+
+
+
+
+
+
+
+
+
+
+
+
+1) What is meaning for getting inside container?
+2) Opening port
+3) running container in background
+4) port forwarding
+
+
+
+
