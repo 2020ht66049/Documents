@@ -1,0 +1,120 @@
+Docker image optimmization
+==========================
+FROM ubuntu
+RUN apt update
+RUN apt install -y git
+RUN apt-get update
+RUN apt install openjdk-17-jre-headless -y 
+RUN git clone https://github.com/spring-projects/spring-petclinic.git
+WORKDIR spring-petclinic
+RUN ./mvnw clean package -DskipTests
+CMD java -jar target/*.jar
+
+Docker build -t image1 .
+
+$ docker image ls
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+image1       latest    c3649144de20   40 seconds ago   752MB
+
+docker run -idt -p 8080:8080 image1
+
+What is container?
+Container is a server created by docker image to serve end user requirement.
+
+Host deployment vs container deployment
+[host deployment]
+git clone https://github.com/spring-projects/spring-petclinic.git
+cd spring-petclinic
+./mvnw package
+java -jar target/*.jar
+
+[container deplyment]
+docker run -idt -p 8080:8080 image1
+
+Multi stage docker build to optimiza the size
+
+$ docker image ls
+REPOSITORY   TAG       IMAGE ID       CREATED          SIZE
+image1       latest    d8416c13ec06   33 seconds ago   437MB
+
+FROM ubuntu as mvn
+RUN apt update
+RUN apt install -y git
+RUN apt-get update
+RUN apt install openjdk-17-jre-headless -y
+RUN git clone https://github.com/spring-projects/spring-petclinic.git
+WORKDIR spring-petclinic 
+RUN ./mvnw clean package -DskipTests
+
+FROM ubuntu
+RUN apt-get update
+RUN apt install openjdk-17-jre-headless -y
+COPY --from=mvn /spring-petclinic/target/spring-petclinic*.jar /spring-petclinic.jar
+CMD java -jar /spring-petclinic.jar
+
+1 container server 100 user, 200 user, so I need 2 container, 500 user > 5 container
+
+
+
+Time to deploy application for autoscalling in host deployment> 2 minutes
+                                              container deplyment> less than 2 second
+
+
+$ docker run -p 8080:8080 -idt springcommunity/spring-framework-petclinic
+Unable to find image 'springcommunity/spring-framework-petclinic:latest' locally
+latest: Pulling from springcommunity/spring-framework-petclinic
+846c0b181fff: Pull complete 
+08b0873b98ac: Pull complete 
+44e7d9ad1d92: Pull complete 
+ab433a0a0933: Pull complete 
+694865a5c444: Pull complete 
+a1012a570933: Pull complete 
+34c5c7ed2313: Pull complete 
+ece75f8f3813: Pull complete 
+41178633602e: Pull complete 
+Digest: sha256:7abfc06c36cf2e6b5523a1ffb0d49fb861e8a372bffbf505762f922ab196ad09
+Status: Downloaded newer image for springcommunity/spring-framework-petclinic:latest
+5edf1b5ec885e7133bcd6c799d9ce7aa15ae5d87168beb43b02a45514e823d57
+
+
+1) What is meaning for getting inside container?
+[node1] (local) root@192.168.0.18 ~
+$ java --version
+bash: java: command not found
+[node1] (local) root@192.168.0.18 ~
+$ docker exec -it 5edf1b5ec885 /bin/bash
+jetty@5edf1b5ec885:~$ java --version
+openjdk 17.0.5 2022-10-18
+OpenJDK Runtime Environment Temurin-17.0.5+8 (build 17.0.5+8)
+OpenJDK 64-Bit Server VM Temurin-17.0.5+8 (build 17.0.5+8, mixed mode, sharing)
+
+
+2) Opening port
+Creating a tunnel
+
+3) running container in background
+Seen example yerterday, by google.com
+from ubuntu
+run apt-get update
+run apt install ip-util -y
+cmd ping google.com
+
+-d option to run the command in the background.
+
+4) port forwarding
+ 0.0.0.0:8080->8080/tcp
+
+5) Why we need container?
+To speedup my deployment process, and make it uniform
+
+6) Build[create the artifact{jar file}] vs release[use the artifact{jar file}]
+
+7) Docker image vs golden image
+   Golder image > it's for envirnment creation
+   docker image > it's for environment along with application environment
+
+
+
+
+
+
