@@ -1,0 +1,80 @@
+Agenda: docker tag, docker layer, docker compose, docker networking, docker staorage, docker volume 
+===================================================================================================
+
+tag> different version
+
+>>> Every Image has tag, and default tag is latest <image-name>:<tag-name>. and default tag is latest
+
+>>> ubuntu version's are 20.04, 22.04. 18.04
+      ubuntu:20.04
+      ubuntu:22.04
+      ubuntu:18.04
+      ubuntu > ubuntu:latest > ubuntu:22.04
+
+
+FROM ubuntu:18.04
+RUN apt update
+RUN apt install -y git
+RUN apt update
+RUN apt install openjdk-17-jre-headless -y 
+RUN git clone https://github.com/spring-projects/spring-petclinic.git
+WORKDIR spring-petclinic
+RUN ./mvnw clean package -DskipTests
+CMD java -jar target/*.jar
+
+3153aa388d02: Pull complete 
+8fd1b38d6c8d: Pull complete 
+de1bdbf9a248: Pull complete 
+1d3447c5abbf: Pull complete 
+d43b3071be30: Pull complete 
+b5940293fcbb: Pull complete 
+4f4fb700ef54: Pull complete 
+0927a6d24432: Pull complete 
+
+
+>>> Docker image is devided into 14 part, and 6 of them are having 0 size, and remaining 8 are having 752 MB size
+https://hub.docker.com/layers/2020ht66049/image/22.4/images/sha256-cb1b52cbc5aaf0d84a533dbfd1552363f5c0a2e615875a0f2cac35c7d7aec559?context=repo
+
+>>> When we are pulling the image, docker will pull those 8 indepent layer paralley.
+
+
+docker tag local-image:tagname new-repo:tagname
+docker push new-repo:tagname
+
+docker tag image2 2020ht66049/image2:8.2.2
+docker push 2020ht66049/image2:8.2.2
+
+>>> This version of software's we are reffering as tag.
+Jenkins
+June2023: 2.401.2   <Major-release>.<minor-release>.<fix-pack>
+August2023: 2.402.0
+
+
+docker-compose, docker networking, docker storage, docker volume, docker-swarm
+==============================================================================
+>>> In the major role of docker in Devops area is to just create the image.
+
+>>> Docker networking tells about how 2[multiple] containers are interlinked.
+
+>>> Docker-compose >> it just tell you how container are connected, but we are not using it practically.
+
+>>> Docker-swarm >>> multi-host docker solution > We would be seeing it in next class onwards
+
+>>> Docker-volume >>> 
+
+>>> Docker storage >>> It explains how you can store your image with minimal space
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
