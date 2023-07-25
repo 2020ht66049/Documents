@@ -1,0 +1,31 @@
+Artifactory Management
+======================
+
+WORA: Write onve read anywhere.
+
+Spring pet clinic:
+==================
+git clone https://github.com/spring-projects/spring-petclinic.git
+cd spring-petclinic
+./mvnw package
+java -jar target/*.jar
+
+Springpetclinic   >>> size is 752 MB
+
+
+Dev >> Test >> Stage >> Prepod >> Production.
+
+>>> Our approache is create image once and use evervywhere.
+>>> Can we save our artifact in the repository[GIT] >> No, because size limit is 100 MB
+
+>>> Artifactory: It's a place where we store data.
+
+>>>Confidance level marking > CL1, CL2, CL3, CL4
+
+Artifactory installation: https://jfrog.com/artifactory/install/
+
+to dowmload data in artifactory: jfrog rt dl docker_repo/image1
+
+to upload data in artifactory: jfrog rt u <file_name> <Repo_Name>
+                               jfrog rt u image1 docker_repo
+  
