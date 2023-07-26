@@ -1,0 +1,122 @@
+DevSecops and sonarqube
+=======================
+
+1) Sonarqube
+
+Below code is doing addtion in python for 2 number-
+num1 = input('Enter first number: ')
+num2 = input('Enter second number: ')
+
+# Add two numbers
+sum = float(num1) + float(num2)
+
+# Display the sum
+print('The sum of {0} and {1} is {2}'.format(num1, num2, sum))
+
+let me run this code mutliple time
+
+>>> If I run this code multiple time it's redundancy. SOmetime we are as operator has no idea about code.
+
+>>> Sonarqube is a tool that help developer to do static analysis.
+
+>>> Code has two things
+    1) Functionality
+    2) standards[Password should not be visible]
+         -u umesh -p abc@321
+    3) lint
+
+number = 10
+
+# check if number is greater than 0
+if number > 0:
+    print('Number is positive.')
+print('The if statement is easy')
+
+ERROR!
+File "<string>", line 4
+    print('Number is positive.')
+    ^
+IndentationError: expected an indented block after 'if' statement on line 3
+
+sonarqube perform all the static analysis.
+
+Bugs: Error in code.
+
+Codesmell: Codding is not good, not met the standards
+
+quality gates:
+1) My line coverage should be greater then 90%
+
+Line coverrage[100%, ]
+a = 33
+b = 33
+if b > a:
+  print("b is greater than a")
+elif a == b:
+  print("a and b are equal")
+
+True: 4 line(66.6%)
+False: 5 line(85%)
+
+2) none of the code should use root user
+
+Security
+========
+
+docker run -p 8080:8080 -idt springcommunity/spring-framework-petclinic
+
+FROM ubuntu
+sudo apt update
+sudo apt install openjdk-11-jdk -y // this may contain virus
+RUN apt-get update
+RUN apt-get install git -y
+RUN apt-get update
+RUN apt-get install maven -y
+RUN git clone https://github.com/spring-projects/spring-petclinic.git // This URL may bring virus
+WORKDIR spring-petclinic
+RUN ./mvnw package
+CMD java -jar target/*.jar
+
+FROM ubuntu as mvn
+RUN apt update
+RUN apt install -y git
+RUN apt-get update
+RUN apt install openjdk-17-jre-headless -y
+RUN git clone https://github.com/spring-projects/spring-petclinic.git
+WORKDIR spring-petclinic
+RUN ./mvnw clean package -DskipTests
+
+FROM ubuntu
+RUN apt-get update
+
+RUN apt install openjdk-17-jre-headless -y
+COPY --from=mvn /spring-petclinic/target/spring-petclinic*.jar /spring-petclinic.jar
+CMD java -jar /spring-petclinic.jar
+
+from ubuntu
+cmd echo "Hello"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
