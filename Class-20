@@ -1,0 +1,66 @@
+Monitoring and Deployment
+=========================
+
+Splunk forwarder is a software that forward log from server1/2/3/4 to master server[Splunk terminology]
+filebeat is a software that forward log from server1/2/3/4 to master server[ELK terminology]
+
+Example: Let say my server is having below data
+
+filebeat
+server.log
+server	CPU utiliation
+Server1	10
+Server2	20
+server3	80
+server4	5
+
+Now, My first requirement is to covert above test data into table format[filter]  >> Logstash
+
+Visualizing the data[Chart] >> Visualization tool [Kibana]
+
+Monitoring objective is to monitor positive and negative behavior.
+
+
+Deployment
+==========
+1) So, I have one application[version1] that is supoorting 1000 users.
+
+2) To run my deploy my application I need to follow some deployment statergy, commonly used deployment stategry are:
+      2.1) Green blue deployment
+      2.2) Canary deployment
+      2.3) recreate
+
+Green blue deployment
+=====================
+Production > Live version of application.
+DR > Backup of production
+
+
+Canary Deployment
+=================
+
+Stage1: Here, we have 1 server, and all the request will go to same server
+
+Stage2: No, version2 is new version, and I want to perform live user testing
+Example: Facebook has created a new feature, reading your face expression and typing the message.
+
+Lets say facebook having 100 users, so facebook will test this feature with 10% user.These kind of deployment is known us canary deployment.
+
+
+
+Recreate
+=========
+We have 4 server with Application+java7, now requirement is I want to migrate my application to java8.
+
+MaxUnavailble: 25%
+Maxsurge:25%
+
+
+Jfrog Xray
+==========
+It will break your stack into number of layes[OS, docker, Application], and indivisually it perform scan and tell you the result
+
+
+Homework:
+1) https://github.com/2020ht66049/Devops_Engineering/blob/main/Introduction%20to%20Devops%20by%20Sonika%20Rathi/Intro_to_DevOps_CS_8_Monitoring.pdf
+2) https://github.com/2020ht66049/Devops_Engineering/blob/main/Introduction%20to%20Devops%20by%20Sonika%20Rathi/Intro_to_DevOps_CS_7_Deployment.pdf
